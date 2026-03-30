@@ -3,7 +3,7 @@
     <app-navbar></app-navbar>
 
     <!-- Main Content Route Area -->
-    <main class="flex-grow pt-[72px]"> <!-- Offset for fixed navbar -->
+    <main class="flex-grow pt-[72px]" [@routeAnimations]="getRouteAnimationData()"> 
         <router-outlet></router-outlet>
     </main>
 

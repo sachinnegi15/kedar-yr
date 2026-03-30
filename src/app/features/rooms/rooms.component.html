@@ -1,1 +1,96 @@
-<p>rooms works!</p>
+<!-- Header Section -->
+<section class="relative py-24 bg-[var(--color-forest-dark)] overflow-hidden">
+  <div class="absolute inset-0 z-0 overflow-hidden">
+    <img src="https://images.unsplash.com/photo-1598091383021-15ddea10925d?q=80&w=1600&auto=format&fit=crop" 
+         alt="Mountain View Header" 
+         class="w-full h-full object-cover opacity-30 scale-110 blur-sm">
+  </div>
+  <div class="relative z-10 max-w-7xl mx-auto px-4 text-center">
+    <h1 class="font-heading text-5xl md:text-6xl font-bold text-white mb-6">Rooms & Suites</h1>
+    <p class="text-white/80 text-lg max-w-2xl mx-auto leading-relaxed">
+      Discover serenity and soul-stirring Himalayan views from our thoughtfully curated living spaces.
+    </p>
+  </div>
+</section>
+
+<!-- Rooms Detailed List -->
+<section class="py-20 px-4 bg-[var(--color-off-white)]">
+  <div class="max-w-7xl mx-auto space-y-20">
+    
+    @for (room of rooms; track room.id; let isEven = $even) {
+      <div appReveal 
+           class="flex flex-col lg:flex-row items-center gap-12 lg:gap-20"
+           [class.lg:flex-row-reverse]="isEven">
+        
+        <!-- Image Container -->
+        <div class="w-full lg:w-3/5 group relative">
+          <div class="overflow-hidden rounded-3xl shadow-2xl aspect-[16/10]">
+            <img [src]="room.image" 
+                 [alt]="room.name" 
+                 class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+          </div>
+          <!-- Price Badge Overlay -->
+          <div class="absolute -bottom-6 right-6 lg:-right-8 bg-white px-8 py-5 rounded-2xl shadow-xl z-20">
+            <p class="text-xs text-gray-500 uppercase tracking-widest font-semibold mb-1">Starting From</p>
+            <p class="font-heading text-3xl font-bold text-[var(--color-forest)]">₹{{ room.price }}<span class="text-sm font-normal text-gray-400">/night</span></p>
+          </div>
+        </div>
+
+        <!-- Content Area -->
+        <div class="w-full lg:w-2/5">
+          <h2 class="font-heading text-3xl md:text-4xl font-bold text-[var(--color-forest)] mb-6">{{ room.name }}</h2>
+          <p class="text-gray-600 text-lg leading-relaxed mb-8">
+            {{ room.description }}
+          </p>
+          
+          <div class="mb-10">
+            <h4 class="text-sm font-bold text-gray-400 uppercase tracking-widest mb-4">Key Amenities</h4>
+            <div class="grid grid-cols-2 gap-y-3 gap-x-4">
+              @for (feature of room.features; track feature) {
+                <div class="flex items-center gap-2 text-gray-700">
+                  <svg class="w-5 h-5 text-[var(--color-saffron)]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                  </svg>
+                  <span class="text-sm font-medium">{{ feature }}</span>
+                </div>
+              }
+            </div>
+          </div>
+
+          <div class="flex flex-col sm:flex-row gap-4 pt-4 border-t border-gray-200">
+            <a [href]="getWhatsAppLink(room.name)" 
+               target="_blank"
+               class="inline-flex items-center justify-center gap-3 px-8 py-4 bg-[var(--color-forest)] text-white rounded-full font-bold hover:bg-[var(--color-forest-dark)] transition-all shadow-lg hover:shadow-xl hover:-translate-y-0.5">
+               <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-[var(--color-saffron)]" fill="currentColor" viewBox="0 0 24 24">
+                 <path d="M11.944 0A12 12 0 000 12a12 12 0 003.844 8.844l-1.353 4.931 5.045-1.321A11.967 11.967 0 0012 24a12 12 0 000-24zm0 22C6.477 22 2 17.523 2 12S6.477 2 12 2s10 4.477 10 10-4.477 10-10 10zm-1.879-14c-.161-.355-.333-.362-.511-.368h-.431c-.179 0-.466.066-.711.332-.244.266-.931.914-.931 2.228 0 1.314.953 2.585 1.086 2.763.133.177 1.866 2.943 4.604 4.075 1.77.733 2.454.78 3.526.657 1.066-.123 2.016-.807 2.302-1.589.286-.782.286-1.455.2-1.589-.086-.134-.32-.214-.675-.392-.355-.178-2.106-1.04-2.433-1.159-.327-.119-.567-.179-.806.178-.24.356-.92 1.157-1.127 1.393-.207.236-.415.265-.77.087-1.385-.688-2.37-1.4-3.14-2.581-.22-.338.224-.316.574-.997.106-.178.053-.334-.035-.512-.089-.178-.806-1.942-1.104-2.658z" />
+               </svg>
+               Check Availability
+            </a>
+          </div>
+        </div>
+      </div>
+    }
+
+  </div>
+</section>
+
+<!-- Additional Information Section -->
+<section appReveal class="py-20 px-4 bg-white border-t border-gray-100">
+  <div class="max-w-4xl mx-auto text-center">
+    <h3 class="font-heading text-2xl md:text-3xl font-bold text-[var(--color-forest)] mb-6">Stay Policy & Information</h3>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-left py-8">
+      <div>
+        <p class="font-bold text-gray-800 mb-2">Check-in / Check-out</p>
+        <p class="text-sm text-gray-600">Check-in: 12:00 PM<br>Check-out: 10:00 AM</p>
+      </div>
+      <div>
+        <p class="font-bold text-gray-800 mb-2">Meals & Dining</p>
+        <p class="text-sm text-gray-600">Pure Vegetarian Meals available. 24/7 Room service for snacks.</p>
+      </div>
+      <div>
+        <p class="font-bold text-gray-800 mb-2">Yatra Support</p>
+        <p class="text-sm text-gray-600">Complimentary assistance for Kedarnath registrations and ponies.</p>
+      </div>
+    </div>
+  </div>
+</section>

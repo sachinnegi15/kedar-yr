@@ -1,15 +1,19 @@
-import { Component, OnDestroy, signal, afterNextRender } from '@angular/core';
+import { Component, OnDestroy, signal, afterNextRender, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterLink } from '@angular/router';
+import { Title, Meta } from '@angular/platform-browser';
+import { RevealDirective } from '../../shared/directives/reveal.directive';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [CommonModule, RouterLink],
+  imports: [CommonModule, RouterLink, RevealDirective],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss'
 })
 export class HomeComponent implements OnDestroy {
+  private title = inject(Title);
+  private meta = inject(Meta);
 
   currentSlide = signal(0);
   private autoPlayInterval: any;
@@ -66,7 +70,7 @@ export class HomeComponent implements OnDestroy {
     {
       name: 'Deluxe Room',
       image: 'https://images.unsplash.com/photo-1631049307264-da0ec9d70304?q=80&w=800&auto=format&fit=crop',
-      price: '₹2,499',
+      price: '2,499',
       features: ['2 Adults', 'Mountain View', 'Hot Water', 'Free WiFi'],
       whatsappMsg: 'Hi! I want to book a Deluxe Room at Kedar Yatra Resort.'
     },
@@ -87,6 +91,9 @@ export class HomeComponent implements OnDestroy {
   ];
 
   constructor() {
+    this.title.setTitle('Kedar Yatra Resort | Luxury Stay on Kedarnath Route');
+    this.meta.updateTag({ name: 'description', content: 'Experience serene mountain stays at Kedar Yatra Resort, the perfect base for your Kedarnath journey. Luxury rooms, pure veg food, and 24/7 yatra assistance.' });
+
     afterNextRender(() => {
       this.startAutoPlay();
     });

@@ -1,1 +1,70 @@
-<p>gallery works!</p>
+<!-- Gallery Hero -->
+<section class="relative py-24 bg-[var(--color-forest-dark)] overflow-hidden">
+  <div class="absolute inset-0 z-0">
+    <img src="https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?q=80&w=1600&auto=format&fit=crop" 
+         alt="Himalayan Gallery Header" 
+         class="w-full h-full object-cover opacity-25 scale-105">
+  </div>
+  <div class="relative z-10 max-w-7xl mx-auto px-4 text-center">
+    <h1 class="font-heading text-5xl md:text-6xl font-bold text-white mb-6">Visual Journey</h1>
+    <p class="text-white/80 text-lg max-w-2xl mx-auto leading-relaxed">
+      A collection of soul-stirring moments from Kedar Yatra Resort and the sacred valleys of Uttarakhand.
+    </p>
+  </div>
+</section>
+
+<!-- Image Grid & Filters -->
+<section class="py-16 px-4 bg-white">
+  <div class="max-w-7xl mx-auto">
+    
+    <!-- Category Filters -->
+    <div class="flex flex-wrap justify-center gap-4 mb-16">
+      @for (cat of ['All', 'Resort', 'Views', 'Rooms']; track cat) {
+        <button (click)="setCategory(cat)"
+                class="px-8 py-3 rounded-full text-sm font-bold border-2 transition-all duration-300"
+                [class.bg-[var(--color-forest)]]="selectedCategory === cat"
+                [class.text-white]="selectedCategory === cat"
+                [class.border-[var(--color-forest)]]="selectedCategory === cat"
+                [class.bg-white]="selectedCategory !== cat"
+                [class.text-gray-500]="selectedCategory !== cat"
+                [class.border-gray-100]="selectedCategory !== cat"
+                [class.hover:border-gray-300]="selectedCategory !== cat">
+          {{ cat }}
+        </button>
+      }
+    </div>
+
+    <!-- Gallery Grid -->
+    <div appReveal class="columns-1 sm:columns-2 lg:columns-3 gap-6 space-y-6">
+      @for (img of filteredImages; track img.url) {
+        <div class="break-inside-avoid relative group rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500">
+          <img [src]="img.url" 
+               [alt]="img.title" 
+               class="w-full h-auto object-cover transition-transform duration-700 group-hover:scale-110">
+          
+          <!-- Image Overlay -->
+          <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-8">
+            <span class="text-[var(--color-saffron)] text-xs font-bold tracking-widest uppercase mb-2">{{ img.category }}</span>
+            <h3 class="text-white font-heading text-xl font-bold translate-y-4 group-hover:translate-y-0 transition-transform duration-300">{{ img.title }}</h3>
+          </div>
+        </div>
+      }
+    </div>
+
+  </div>
+</section>
+
+<!-- Call to Action Banner -->
+<section appReveal class="py-20 px-4">
+  <div class="max-w-4xl mx-auto rounded-[40px] bg-[var(--color-forest)] p-12 text-center text-white relative overflow-hidden">
+    <div class="absolute top-0 right-0 w-64 h-64 bg-white/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2"></div>
+    <div class="relative z-10">
+      <h3 class="font-heading text-3xl md:text-4xl font-bold mb-6">Experience This View in Person</h3>
+      <p class="text-white/70 text-lg mb-10 max-w-xl mx-auto">Book your stay at Kedar Yatra Resort today and witness the majesty of the Garhwal Himalayas from your balcony.</p>
+      <a routerLink="/rooms" 
+         class="inline-flex items-center px-10 py-4 bg-[var(--color-saffron)] text-white rounded-full font-bold hover:bg-[var(--color-saffron-hover)] transition-all shadow-xl hover:-translate-y-0.5">
+         View Accommodation
+      </a>
+    </div>
+  </div>
+</section>
