@@ -123,7 +123,7 @@ export class HomeComponent implements OnDestroy {
   }
 
   getWhatsAppLink(message: string): string {
-    return `https://wa.me/910000000000?text=${encodeURIComponent(message)}`;
+    return `https://wa.me/917467840098?text=${encodeURIComponent(message)}`;
   }
 
   getRangeArray(n: number): number[] {
