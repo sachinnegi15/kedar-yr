@@ -1,0 +1,333 @@
+<section class="relative w-full h-screen min-h-[600px] overflow-hidden">
+
+  <!-- Slides -->
+  @for (slide of slides; track $index) {
+  <div class="absolute inset-0 w-full h-full transition-opacity duration-1000 ease-in-out"
+    [class.opacity-100]="currentSlide() === $index" [class.opacity-0]="currentSlide() !== $index">
+
+    <!-- Background Image -->
+    <img [src]="slide.image" [alt]="slide.title" class="absolute inset-0 w-full h-full object-cover object-center" />
+
+    <!-- Dark Gradient Overlay -->
+    <div class="absolute inset-0 bg-gradient-to-b from-black/50 via-black/30 to-black/70"></div>
+
+    <!-- Slide Content -->
+    <div class="absolute inset-0 flex flex-col items-center justify-center text-center px-6 lg:px-12">
+      <!-- Badge -->
+      <span
+        class="inline-block px-4 py-1.5 mb-5 text-xs font-semibold tracking-widest uppercase text-white border border-white/40 rounded-full backdrop-blur-sm bg-white/10">
+        Kedarnath Route · Uttarakhand
+      </span>
+
+      <!-- Heading -->
+      <h1
+        class="font-heading text-4xl sm:text-5xl lg:text-7xl font-extrabold text-white leading-tight max-w-4xl mb-5 drop-shadow-lg">
+        {{ slide.title }}
+      </h1>
+
+      <!-- Subtitle -->
+      <p class="text-white/85 text-base sm:text-lg lg:text-xl max-w-2xl mb-10 leading-relaxed drop-shadow">
+        {{ slide.subtitle }}
+      </p>
+
+      <!-- CTA Buttons -->
+      <div class="flex flex-col sm:flex-row gap-4 w-full justify-center">
+        <a [href]="getWhatsAppLink('Hi! I want to book a stay at Kedar Yatra Resort.')" target="_blank"
+          class="inline-flex items-center justify-center gap-3 px-8 py-4 rounded-full bg-[var(--color-saffron)] hover:bg-[var(--color-saffron-hover)] text-white font-semibold text-base transition-all duration-300 shadow-xl hover:shadow-2xl hover:-translate-y-0.5 active:translate-y-0">
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+            <path
+              d="M11.944 0A12 12 0 000 12a12 12 0 003.844 8.844l-1.353 4.931 5.045-1.321A11.967 11.967 0 0012 24a12 12 0 000-24zm0 22C6.477 22 2 17.523 2 12S6.477 2 12 2s10 4.477 10 10-4.477 10-10 10zm-1.879-14c-.161-.355-.333-.362-.511-.368h-.431c-.179 0-.466.066-.711.332-.244.266-.931.914-.931 2.228 0 1.314.953 2.585 1.086 2.763.133.177 1.866 2.943 4.604 4.075 1.77.733 2.454.78 3.526.657 1.066-.123 2.016-.807 2.302-1.589.286-.782.286-1.455.2-1.589-.086-.134-.32-.214-.675-.392-.355-.178-2.106-1.04-2.433-1.159-.327-.119-.567-.179-.806.178-.24.356-.92 1.157-1.127 1.393-.207.236-.415.265-.77.087-1.385-.688-2.37-1.4-3.14-2.581-.22-.338.224-.316.574-.997.106-.178.053-.334-.035-.512-.089-.178-.806-1.942-1.104-2.658z" />
+          </svg>
+          {{ slide.cta }}
+        </a>
+        <a routerLink="/rooms"
+          class="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full border-2 border-white/70 text-white font-semibold text-base hover:bg-white hover:text-[var(--color-forest)] transition-all duration-300 hover:-translate-y-0.5">
+          View Rooms
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+          </svg>
+        </a>
+      </div>
+    </div>
+  </div>
+  }
+
+  <!-- Prev / Next Arrows -->
+  <button (click)="prevSlide()"
+    class="absolute left-4 top-1/2 -translate-y-1/2 z-20 flex items-center justify-center w-11 h-11 rounded-full bg-white/20 hover:bg-white/40 border border-white/30 backdrop-blur-sm text-white transition-all duration-200 hover:scale-110"
+    aria-label="Previous slide">
+    <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+    </svg>
+  </button>
+  <button (click)="nextSlide()"
+    class="absolute right-4 top-1/2 -translate-y-1/2 z-20 flex items-center justify-center w-11 h-11 rounded-full bg-white/20 hover:bg-white/40 border border-white/30 backdrop-blur-sm text-white transition-all duration-200 hover:scale-110"
+    aria-label="Next slide">
+    <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+    </svg>
+  </button>
+
+  <!-- Dot Indicators -->
+  <div class="absolute bottom-8 left-1/2 -translate-x-1/2 z-20 flex gap-2.5">
+    @for (slide of slides; track $index) {
+    <button (click)="goToSlide($index)" class="h-2 rounded-full transition-all duration-400 bg-white"
+      [class.w-8]="currentSlide() === $index" [class.w-2]="currentSlide() !== $index"
+      [class.opacity-100]="currentSlide() === $index" [class.opacity-40]="currentSlide() !== $index"
+      [attr.aria-label]="'Go to slide ' + ($index + 1)">
+    </button>
+    }
+  </div>
+
+  <!-- Scroll down hint -->
+  <div class="absolute bottom-8 right-6 z-20 hidden sm:flex flex-col items-center gap-1 text-white/60">
+    <span class="text-xs tracking-widest uppercase">Scroll</span>
+    <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 animate-bounce" fill="none" viewBox="0 0 24 24"
+      stroke="currentColor">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+    </svg>
+  </div>
+</section>
+
+<!-- ─────────────────────────────────────────── -->
+<!-- QUICK STATS BAR -->
+<!-- ─────────────────────────────────────────── -->
+<section class="bg-[var(--color-forest)] text-white py-6 px-4">
+  <div class="max-w-6xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+    <div>
+      <p class="font-heading text-3xl font-bold text-[var(--color-saffron)]">500+</p>
+      <p class="text-sm text-white/70 mt-1">Happy Guests</p>
+    </div>
+    <div>
+      <p class="font-heading text-3xl font-bold text-[var(--color-saffron)]">15+</p>
+      <p class="text-sm text-white/70 mt-1">Premium Rooms</p>
+    </div>
+    <div>
+      <p class="font-heading text-3xl font-bold text-[var(--color-saffron)]">10 km</p>
+      <p class="text-sm text-white/70 mt-1">From Sonprayag</p>
+    </div>
+    <div>
+      <p class="font-heading text-3xl font-bold text-[var(--color-saffron)]">24/7</p>
+      <p class="text-sm text-white/70 mt-1">Guest Support</p>
+    </div>
+  </div>
+</section>
+
+<!-- ─────────────────────────────────────────── -->
+<!-- ABOUT SECTION -->
+<!-- ─────────────────────────────────────────── -->
+<section class="py-20 px-4 bg-[var(--color-off-white)]">
+  <div class="max-w-6xl mx-auto flex flex-col lg:flex-row items-center gap-12 lg:gap-20">
+
+    <!-- Image Side -->
+    <div class="w-full lg:w-1/2 relative">
+      <img src="https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?q=80&w=900&auto=format&fit=crop"
+        alt="Kedarnath valley view from resort" class="rounded-3xl w-full h-80 lg:h-[480px] object-cover shadow-2xl" />
+      <!-- Floating badge -->
+      <div
+        class="absolute -bottom-5 -right-4 lg:-right-8 bg-white rounded-2xl shadow-xl px-5 py-4 flex items-center gap-3">
+        <span class="text-3xl">🛕</span>
+        <div>
+          <p class="font-heading font-bold text-[var(--color-forest)] text-sm">Sacred Route</p>
+          <p class="text-xs text-gray-500">Kedarnath Yatra Base</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Text Side -->
+    <div class="w-full lg:w-1/2">
+      <p class="text-[var(--color-saffron)] font-semibold text-sm tracking-widest uppercase mb-3">About Our Resort</p>
+      <h2 class="font-heading text-4xl lg:text-5xl font-bold text-[var(--color-forest)] leading-tight mb-6">
+        Your Serene Sanctuary on the Kedarnath Route
+      </h2>
+      <p class="text-gray-600 text-base leading-relaxed mb-4">
+        Nestled in the lush green valleys of Uttarakhand, Kedar Yatra Resort is the ideal base camp for pilgrims and
+        nature lovers embarking on the sacred Kedarnath Yatra.
+      </p>
+      <p class="text-gray-600 text-base leading-relaxed mb-8">
+        Whether you seek spiritual rejuvenation, Himalayan adventure, or simply a tranquil escape from city life — our
+        property offers world-class comfort wrapped in divine natural beauty.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4">
+        <a routerLink="/rooms"
+          class="inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-full bg-[var(--color-forest)] text-white font-semibold hover:bg-[var(--color-forest-dark)] transition-all duration-300 shadow-lg hover:shadow-xl hover:-translate-y-0.5">
+          Explore Rooms
+        </a>
+        <a routerLink="/contact"
+          class="inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-full border-2 border-[var(--color-forest)] text-[var(--color-forest)] font-semibold hover:bg-[var(--color-forest)] hover:text-white transition-all duration-300">
+          How to Reach
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+          </svg>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─────────────────────────────────────────── -->
+<!-- FEATURED ROOMS -->
+<!-- ─────────────────────────────────────────── -->
+<section class="py-20 px-4 bg-white">
+  <div class="max-w-6xl mx-auto">
+    <!-- Section Header -->
+    <div class="text-center mb-14">
+      <p class="text-[var(--color-saffron)] font-semibold text-sm tracking-widest uppercase mb-3">Accommodations</p>
+      <h2 class="font-heading text-4xl lg:text-5xl font-bold text-[var(--color-forest)] mb-4">Our Rooms & Suites</h2>
+      <p class="text-gray-500 max-w-xl mx-auto">Thoughtfully designed spaces that blend mountain aesthetics with modern
+        comfort for your perfect stay.</p>
+    </div>
+
+    <!-- Rooms Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+      @for (room of rooms; track room.name) {
+      <div
+        class="group bg-white rounded-3xl overflow-hidden shadow-md hover:shadow-2xl transition-all duration-400 border border-gray-100 flex flex-col">
+
+        <!-- Room Image -->
+        <div class="relative h-56 overflow-hidden">
+          <img [src]="room.image" [alt]="room.name"
+            class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
+          <div
+            class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-400">
+          </div>
+        </div>
+
+        <!-- Room Info -->
+        <div class="p-6 flex flex-col flex-grow">
+          <div class="flex items-start justify-between mb-3">
+            <h3 class="font-heading text-xl font-bold text-[var(--color-forest)]">{{ room.name }}</h3>
+            <span class="font-heading text-lg font-bold text-[var(--color-saffron)]">{{ room.price }}<span
+                class="text-xs font-normal text-gray-400">/night</span></span>
+          </div>
+
+          <!-- Features -->
+          <div class="flex flex-wrap gap-2 mb-6">
+            @for (feature of room.features; track feature) {
+            <span class="text-xs px-3 py-1 rounded-full bg-gray-100 text-gray-600 font-medium">{{ feature }}</span>
+            }
+          </div>
+
+          <!-- CTA -->
+          <a [href]="getWhatsAppLink(room.whatsappMsg)" target="_blank"
+            class="mt-auto w-full inline-flex items-center justify-center gap-2 py-3 rounded-full bg-[var(--color-forest)] text-white font-semibold text-sm hover:bg-[var(--color-saffron)] transition-all duration-300 hover:-translate-y-0.5 shadow-md hover:shadow-lg">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+              <path
+                d="M11.944 0A12 12 0 000 12a12 12 0 003.844 8.844l-1.353 4.931 5.045-1.321A11.967 11.967 0 0012 24a12 12 0 000-24zm0 22C6.477 22 2 17.523 2 12S6.477 2 12 2s10 4.477 10 10-4.477 10-10 10zm-1.879-14c-.161-.355-.333-.362-.511-.368h-.431c-.179 0-.466.066-.711.332-.244.266-.931.914-.931 2.228 0 1.314.953 2.585 1.086 2.763.133.177 1.866 2.943 4.604 4.075 1.77.733 2.454.78 3.526.657 1.066-.123 2.016-.807 2.302-1.589.286-.782.286-1.455.2-1.589-.086-.134-.32-.214-.675-.392-.355-.178-2.106-1.04-2.433-1.159-.327-.119-.567-.179-.806.178-.24.356-.92 1.157-1.127 1.393-.207.236-.415.265-.77.087-1.385-.688-2.37-1.4-3.14-2.581-.22-.338.224-.316.574-.997.106-.178.053-.334-.035-.512-.089-.178-.806-1.942-1.104-2.658z" />
+            </svg>
+            Book Now via WhatsApp
+          </a>
+        </div>
+      </div>
+      }
+    </div>
+
+    <div class="text-center mt-12">
+      <a routerLink="/rooms"
+        class="inline-flex items-center gap-2 text-[var(--color-forest)] font-semibold hover:text-[var(--color-saffron)] transition-colors">
+        View All Room Details
+        <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+        </svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ─────────────────────────────────────────── -->
+<!-- AMENITIES -->
+<!-- ─────────────────────────────────────────── -->
+<section class="py-20 px-4 bg-[var(--color-off-white)]">
+  <div class="max-w-6xl mx-auto">
+    <div class="text-center mb-14">
+      <p class="text-[var(--color-saffron)] font-semibold text-sm tracking-widest uppercase mb-3">What We Offer</p>
+      <h2 class="font-heading text-4xl lg:text-5xl font-bold text-[var(--color-forest)] mb-4">Resort Amenities</h2>
+      <p class="text-gray-500 max-w-xl mx-auto">Everything you need for a comfortable, seamless, and memorable stay on
+        your sacred journey.</p>
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      @for (amenity of amenities; track amenity.title) {
+      <div
+        class="group bg-white rounded-2xl p-7 shadow-sm border border-gray-100 hover:border-[var(--color-forest)] hover:shadow-lg transition-all duration-300 hover:-translate-y-1 flex gap-5 items-start">
+        <span
+          class="text-3xl flex-shrink-0 w-12 h-12 flex items-center justify-center bg-[var(--color-forest)]/10 rounded-xl">{{
+          amenity.icon }}</span>
+        <div>
+          <h3 class="font-heading font-bold text-[var(--color-forest)] text-lg mb-1">{{ amenity.title }}</h3>
+          <p class="text-gray-500 text-sm leading-relaxed">{{ amenity.desc }}</p>
+        </div>
+      </div>
+      }
+    </div>
+  </div>
+</section>
+
+<!-- ─────────────────────────────────────────── -->
+<!-- TESTIMONIALS -->
+<!-- ─────────────────────────────────────────── -->
+<section class="py-20 px-4 bg-[var(--color-forest)]">
+  <div class="max-w-6xl mx-auto">
+    <div class="text-center mb-14">
+      <p class="text-[var(--color-saffron)] font-semibold text-sm tracking-widest uppercase mb-3">Guest Stories</p>
+      <h2 class="font-heading text-4xl lg:text-5xl font-bold text-white mb-4">Words from Our Guests</h2>
+      <p class="text-white/60 max-w-xl mx-auto">Thousands of pilgrims and travelers have begun their sacred journey from
+        here. Here is what they say.</p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+      @for (t of testimonials; track t.name) {
+      <div
+        class="bg-white/10 backdrop-blur-sm rounded-3xl p-7 border border-white/20 hover:bg-white/20 transition-all duration-300">
+        <!-- Stars -->
+        <div class="flex gap-1 mb-5">
+          @for (star of getRangeArray(t.rating); track star) {
+          <svg class="w-5 h-5 text-[var(--color-saffron)]" fill="currentColor" viewBox="0 0 20 20">
+            <path
+              d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+          </svg>
+          }
+        </div>
+        <p class="text-white/85 text-sm leading-relaxed italic mb-6">"{{ t.text }}"</p>
+        <!-- Author -->
+        <div class="flex items-center gap-3">
+          <div
+            class="w-10 h-10 rounded-full bg-[var(--color-saffron)] flex items-center justify-center text-white font-bold text-sm">
+            {{ t.avatar }}</div>
+          <div>
+            <p class="font-semibold text-white text-sm">{{ t.name }}</p>
+            <p class="text-white/50 text-xs">{{ t.location }}</p>
+          </div>
+        </div>
+      </div>
+      }
+    </div>
+  </div>
+</section>
+
+<!-- ─────────────────────────────────────────── -->
+<!-- WHATSAPP CTA BANNER -->
+<!-- ─────────────────────────────────────────── -->
+<section class="relative py-20 px-4 overflow-hidden bg-white">
+  <!-- Decorative BG blob -->
+  <div class="absolute -top-24 -right-24 w-96 h-96 rounded-full bg-[var(--color-saffron)]/10 blur-3xl"></div>
+  <div class="absolute -bottom-24 -left-24 w-96 h-96 rounded-full bg-[var(--color-forest)]/10 blur-3xl"></div>
+
+  <div class="relative max-w-3xl mx-auto text-center">
+    <span class="text-5xl mb-6 block">🙏</span>
+    <h2 class="font-heading text-4xl lg:text-5xl font-bold text-[var(--color-forest)] mb-5">Ready to Begin Your Yatra?
+    </h2>
+    <p class="text-gray-500 text-lg mb-10 max-w-xl mx-auto">Reach out on WhatsApp right now for instant room
+      availability, pricing, and special group packages.</p>
+    <a href="https://wa.me/910000000000?text=Hi!%20I%20would%20like%20to%20inquire%20about%20a%20booking%20at%20Kedar%20Yatra%20Resort."
+      target="_blank"
+      class="inline-flex items-center gap-3 px-10 py-5 rounded-full bg-[#25D366] hover:bg-[#1ebe5d] text-white font-bold text-lg transition-all duration-300 shadow-2xl hover:shadow-green-400/40 hover:-translate-y-1">
+      <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+        <path
+          d="M11.944 0A12 12 0 000 12a12 12 0 003.844 8.844l-1.353 4.931 5.045-1.321A11.967 11.967 0 0012 24a12 12 0 000-24zm0 22C6.477 22 2 17.523 2 12S6.477 2 12 2s10 4.477 10 10-4.477 10-10 10zm-1.879-14c-.161-.355-.333-.362-.511-.368h-.431c-.179 0-.466.066-.711.332-.244.266-.931.914-.931 2.228 0 1.314.953 2.585 1.086 2.763.133.177 1.866 2.943 4.604 4.075 1.77.733 2.454.78 3.526.657 1.066-.123 2.016-.807 2.302-1.589.286-.782.286-1.455.2-1.589-.086-.134-.32-.214-.675-.392-.355-.178-2.106-1.04-2.433-1.159-.327-.119-.567-.179-.806.178-.24.356-.92 1.157-1.127 1.393-.207.236-.415.265-.77.087-1.385-.688-2.37-1.4-3.14-2.581-.22-.338.224-.316.574-.997.106-.178.053-.334-.035-.512-.089-.178-.806-1.942-1.104-2.658z" />
+      </svg>
+      Chat on WhatsApp
+    </a>
+    <p class="mt-5 text-gray-400 text-sm">Usually replies within minutes · Available 6 AM – 10 PM IST</p>
+  </div>
+</section>
