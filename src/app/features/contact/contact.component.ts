@@ -24,7 +24,7 @@ export class ContactComponent {
   contactInfo = {
     phone: '+91 74678 40098',
     email: 'info@kedaryatraresort.com',
-    address: 'Kedarnath Highway, Sonprayag-Gaurikund Route, Uttarakhand 246471',
+    address: 'Opp. Aryan Aviation Helipad, Masta, Narayankoti, Guptkashi, Uttarakhand, India, 246471',
     whatsapp: '917467840098'
   };
 
