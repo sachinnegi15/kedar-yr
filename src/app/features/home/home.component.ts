@@ -91,7 +91,7 @@ export class HomeComponent implements OnDestroy {
   ];
 
   constructor() {
-    this.title.setTitle('Kedar Yatra Resort | Luxury Stay on Kedarnath Route');
+    this.title.setTitle('Kedar Yatra Resort | Comfortable Stay on Kedarnath Route');
     this.meta.updateTag({ name: 'description', content: 'Experience serene mountain stays at Kedar Yatra Resort, the perfect base for your Kedarnath journey. Luxury rooms, pure veg food, and 24/7 yatra assistance.' });
 
     afterNextRender(() => {
