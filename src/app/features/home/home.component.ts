@@ -90,6 +90,38 @@ export class HomeComponent implements OnDestroy {
     }
   ];
 
+  yatraRoute = [
+    {
+      name: 'Phata (Resort)',
+      distance: 'Start',
+      time: '0 min',
+      icon: '🚁',
+      tip: 'Helicopter service starts right next to our hotel! Reach Kedarnath in 8 minutes.',
+      isResort: true
+    },
+    {
+      name: 'Sonprayag',
+      distance: '18 km',
+      time: '45 min',
+      icon: '🏘️',
+      tip: 'Major hub where private vehicles stop. Shuttle service to Gaurikund starts here.'
+    },
+    {
+      name: 'Gaurikund',
+      distance: '23 km',
+      time: '1 hr',
+      icon: '♨️',
+      tip: 'The base for the 16km trek. Famous for its natural hot water spring and Gauri Devi temple.'
+    },
+    {
+      name: 'Kedarnath Temple',
+      distance: '39 km',
+      time: '8 min (Heli)',
+      icon: '🛕',
+      tip: 'One of the Chota Char Dhams. A divine spiritual experience at 3,583m altitude.'
+    }
+  ];
+
   constructor() {
     this.title.setTitle('Kedar Yatra Resort | Comfortable Stay on Kedarnath Route');
     this.meta.updateTag({ name: 'description', content: 'Experience serene mountain stays at Kedar Yatra Resort, the perfect base for your Kedarnath journey. Luxury rooms, pure veg food, and 24/7 yatra assistance.' });

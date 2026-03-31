@@ -16,13 +16,13 @@ export class RevealDirective {
 
       const rect = el.getBoundingClientRect();
       
-      // If it's already on screen, reveal it instantly
+      // If the element is currently visible on screen, reveal it instantly
       if (rect.top < window.innerHeight && rect.bottom > 0) {
         el.classList.add('reveal-visible');
         return;
       }
 
-      // Otherwise, start hidden
+      // Otherwise, start hidden for the sliding entrance
       el.classList.add('reveal-hidden');
 
       const observer = new IntersectionObserver((entries) => {
@@ -35,7 +35,7 @@ export class RevealDirective {
         });
       }, {
         threshold: 0.01,
-        rootMargin: '0px 0px 50px 0px' 
+        rootMargin: '0px 0px 150px 0px' // Increased margin makes it more 'active' and impressive
       });
 
       observer.observe(el);

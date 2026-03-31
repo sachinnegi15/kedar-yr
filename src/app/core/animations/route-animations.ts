@@ -3,32 +3,20 @@ import {
   transition,
   style,
   query,
-  animate,
-  group
+  animate
 } from '@angular/animations';
 
 export const fadeRouteAnimation = trigger('routeAnimations', [
+  // We use a clean, fast fade-in for the entering page only.
+  // This is the most reliable way to prevent 'flickering' and 'layout jumping' 
+  // that occurs when two pages exist simultaneously in the DOM.
   transition('* <=> *', [
-    style({ position: 'relative' }),
-    query(':enter, :leave', [
-      style({
-        position: 'absolute',
-        top: 0,
-        left: 0,
-        width: '100%',
-        opacity: 0,
-      })
-    ], { optional: true }),
     query(':enter', [
-      style({ opacity: 0, transform: 'translateY(5px)' })
-    ], { optional: true }),
-    group([
-      query(':leave', [
-        animate('250ms ease-out', style({ opacity: 0, transform: 'translateY(-5px)' }))
-      ], { optional: true }),
-      query(':enter', [
-        animate('350ms 100ms ease-out', style({ opacity: 1, transform: 'translateY(0)' }))
-      ], { optional: true })
-    ])
+      style({ 
+        opacity: 0,
+        display: 'block' 
+      }),
+      animate('300ms ease-out', style({ opacity: 1 }))
+    ], { optional: true })
   ])
 ]);

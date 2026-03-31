@@ -17,6 +17,11 @@ export const routes: Routes = [
     data: { animation: 'GalleryPage' }
   },
   { 
+    path: 'travel', 
+    loadComponent: () => import('./features/transport/transport.component').then(m => m.TransportComponent),
+    data: { animation: 'TravelPage' }
+  },
+  { 
     path: 'contact', 
     loadComponent: () => import('./features/contact/contact.component').then(m => m.ContactComponent),
     data: { animation: 'ContactPage' }

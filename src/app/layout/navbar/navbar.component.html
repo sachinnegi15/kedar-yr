@@ -24,6 +24,9 @@
                 <a routerLink="/gallery"
                     routerLinkActive="text-[var(--color-forest)] font-semibold border-b-2 border-[var(--color-forest)]"
                     class="text-gray-600 hover:text-[var(--color-forest)] px-1 py-2 text-sm font-medium transition-colors">Gallery</a>
+                <a routerLink="/travel"
+                    routerLinkActive="text-[var(--color-forest)] font-semibold border-b-2 border-[var(--color-forest)]"
+                    class="text-gray-600 hover:text-[var(--color-forest)] px-1 py-2 text-sm font-medium transition-colors">Travel</a>
                 <a routerLink="/contact"
                     routerLinkActive="text-[var(--color-forest)] font-semibold border-b-2 border-[var(--color-forest)]"
                     class="text-gray-600 hover:text-[var(--color-forest)] px-1 py-2 text-sm font-medium transition-colors">Location</a>
@@ -66,7 +69,8 @@
     </div>
 
     <!-- Mobile Menu, show/hide based on menu state. -->
-    <div class="md:hidden border-t border-gray-100 bg-white shadow-lg dropdown-transition" *ngIf="isMobileMenuOpen">
+    <div [@menuAnimation] class="md:hidden border-t border-gray-100 bg-white shadow-lg overflow-hidden"
+        *ngIf="isMobileMenuOpen">
         <div class="px-2 pt-2 pb-6 space-y-1 sm:px-3 flex flex-col items-center mt-2">
             <a routerLink="/" (click)="toggleMenu()" routerLinkActive="bg-[var(--color-forest)] text-white"
                 [routerLinkActiveOptions]="{exact: true}"
@@ -76,6 +80,8 @@
                 & Suites</a>
             <a routerLink="/gallery" (click)="toggleMenu()" routerLinkActive="bg-[var(--color-forest)] text-white"
                 class="w-full text-center hover:bg-gray-50 text-gray-700 block px-3 py-3 rounded-md text-base font-medium transition-colors">Gallery</a>
+            <a routerLink="/travel" (click)="toggleMenu()" routerLinkActive="bg-[var(--color-forest)] text-white"
+                class="w-full text-center hover:bg-gray-50 text-gray-700 block px-3 py-3 rounded-md text-base font-medium transition-colors">Travel</a>
             <a routerLink="/contact" (click)="toggleMenu()" routerLinkActive="bg-[var(--color-forest)] text-white"
                 class="w-full text-center hover:bg-gray-50 text-gray-700 block px-3 py-3 rounded-md text-base font-medium transition-colors">Location</a>
 
