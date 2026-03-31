@@ -32,7 +32,7 @@ export class RoomsComponent {
     {
       id: 'super-deluxe',
       name: 'Super Deluxe Balcony Suite',
-      image: 'https://images.unsplash.com/photo-1591088398332-8596b4d9b63d?q=80&w=1200&auto=format&fit=crop',
+      image: 'https://plus.unsplash.com/premium_photo-1670076505419-99468d952c61?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
       price: '3,999',
       description: 'Experience luxury with our spacious Super Deluxe suites featuring a private balcony and premium bedding.',
       features: ['King Size Bed', 'Private Balcony', 'Teak Wood Furniture', '24/7 Room Service', 'Heater'],
