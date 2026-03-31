@@ -1,12 +1,15 @@
 @import "tailwindcss";
 
 @theme {
-  --color-forest: #2d4a3e; /* Deep Forest Green for primary elements */
+  --color-forest: #2d4a3e;
+  /* Deep Forest Green for primary elements */
   --color-forest-dark: #1b3026;
-  --color-saffron: #f4a261; /* Spiritual warmth */
+  --color-saffron: #f4a261;
+  /* Spiritual warmth */
   --color-saffron-hover: #e78c41;
-  --color-off-white: #fafaf9; /* Warm white background */
-  
+  --color-off-white: #fafaf9;
+  /* Warm white background */
+
   --font-heading: 'Outfit', sans-serif;
   --font-body: 'Inter', sans-serif;
 }
@@ -21,7 +24,12 @@ body {
   padding: 0;
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   font-family: var(--font-heading);
 }
 
