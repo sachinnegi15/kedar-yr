@@ -2,6 +2,7 @@ import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Title, Meta } from '@angular/platform-browser';
 import { RevealDirective } from '../../shared/directives/reveal.directive';
+import { buildWhatsAppUrl } from '../../core/constants/contact';
 
 @Component({
   selector: 'app-transport',
@@ -44,6 +45,6 @@ export class TransportComponent {
 
   getWhatsAppLink(subject: string): string {
     const msg = `Hi! I am interested in your Taxi/Travel service: ${subject}. Please share more details and availability.`;
-    return `https://wa.me/917467840098?text=${encodeURIComponent(msg)}`;
+    return buildWhatsAppUrl(msg);
   }
 }

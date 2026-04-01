@@ -2,6 +2,7 @@ import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Title, Meta } from '@angular/platform-browser';
 import { RevealDirective } from '../../shared/directives/reveal.directive';
+import { buildWhatsAppUrl } from '../../core/constants/contact';
 
 @Component({
   selector: 'app-rooms',
@@ -51,6 +52,6 @@ export class RoomsComponent {
 
   getWhatsAppLink(roomName: string): string {
     const msg = `Hi! I'm interested in booking the ${roomName} at Kedar Yatra Resort. Please share availability.`;
-    return `https://wa.me/917467840098?text=${encodeURIComponent(msg)}`;
+    return buildWhatsAppUrl(msg);
   }
 }

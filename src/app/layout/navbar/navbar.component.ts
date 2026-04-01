@@ -3,6 +3,7 @@ import { CommonModule, DOCUMENT } from '@angular/common';
 import { RouterLink, RouterLinkActive } from '@angular/router';
 import { trigger, style, transition, animate } from '@angular/animations';
 import { MotionPreferenceService } from '../../core/motion-preference.service';
+import { buildWhatsAppUrl } from '../../core/constants/contact';
 
 @Component({
   selector: 'app-navbar',
@@ -32,6 +33,10 @@ import { MotionPreferenceService } from '../../core/motion-preference.service';
 export class NavbarComponent implements OnDestroy {
   private readonly document = inject(DOCUMENT);
   private readonly motion = inject(MotionPreferenceService);
+
+  readonly whatsappBookingUrl = buildWhatsAppUrl(
+    'Hi, I would like to inquire about a booking at Kedar Yatra Resort.',
+  );
 
   isMobileMenuOpen = false;
   isScrolled = false;

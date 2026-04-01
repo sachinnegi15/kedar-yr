@@ -2,6 +2,12 @@ import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Title, Meta } from '@angular/platform-browser';
 import { RevealDirective } from '../../shared/directives/reveal.directive';
+import {
+  RESORT_PHONE_DISPLAY,
+  RESORT_PHONE_TEL_HREF,
+  RESORT_WHATSAPP_E164,
+  buildWhatsAppUrl,
+} from '../../core/constants/contact';
 
 @Component({
   selector: 'app-contact',
@@ -20,14 +26,15 @@ export class ContactComponent {
   }
 
   contactInfo = {
-    phone: '+91 74678 40098',
+    phone: RESORT_PHONE_DISPLAY,
+    telHref: RESORT_PHONE_TEL_HREF,
     email: 'info@kedaryatraresort.com',
     address: 'Opp. Aryan Aviation Helipad, Masta, Narayankoti, Guptkashi, Uttarakhand, India, 246471',
-    whatsapp: '917467840098'
+    whatsapp: RESORT_WHATSAPP_E164,
   };
 
   getWhatsAppLink(subject: string): string {
     const msg = `Hi! I'm reaching out regarding: ${subject}`;
-    return `https://wa.me/${this.contactInfo.whatsapp}?text=${encodeURIComponent(msg)}`;
+    return buildWhatsAppUrl(msg);
   }
 }

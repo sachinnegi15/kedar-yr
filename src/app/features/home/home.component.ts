@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { RouterLink } from '@angular/router';
 import { Title, Meta } from '@angular/platform-browser';
 import { RevealDirective } from '../../shared/directives/reveal.directive';
+import { buildWhatsAppUrl } from '../../core/constants/contact';
 
 @Component({
   selector: 'app-home',
@@ -95,7 +96,7 @@ export class HomeComponent implements OnDestroy {
     },
     {
       name: 'Super Deluxe Suite',
-      image: 'https://images.unsplash.com/photo-1591088398332-8596b4d9b63d?q=80&w=800&auto=format&fit=crop',
+      image: 'https://plus.unsplash.com/premium_photo-1670076505419-99468d952c61?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
       price: '₹3,999',
       features: ['2-4 Adults', 'Valley View', 'Balcony', 'Heater Included'],
       whatsappMsg: 'Hi! I want to book a Super Deluxe Suite at Kedar Yatra Resort.'
@@ -181,8 +182,13 @@ export class HomeComponent implements OnDestroy {
   }
 
   getWhatsAppLink(message: string): string {
-    return `https://wa.me/917467840098?text=${encodeURIComponent(message)}`;
+    return buildWhatsAppUrl(message);
   }
+
+  /** Bottom CTA banner (static preset message). */
+  readonly whatsappBookingBannerUrl = buildWhatsAppUrl(
+    'Hi! I would like to inquire about a booking at Kedar Yatra Resort.',
+  );
 
   getRangeArray(n: number): number[] {
     return Array.from({ length: n }, (_, i) => i);
