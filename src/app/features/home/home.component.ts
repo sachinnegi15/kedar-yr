@@ -68,6 +68,23 @@ export class HomeComponent implements OnDestroy {
     { icon: '📶', title: 'WiFi Available', desc: 'Stay connected with complimentary WiFi throughout the property.' }
   ];
 
+  cuisineHighlights = [
+    {
+      icon: '🍛',
+      title: 'North Indian Kitchen',
+      badge: 'Pilgrim Favorite',
+      items: ['Dal Tadka & Jeera Rice', 'Paneer Curries', 'Fresh Roti / Paratha'],
+      desc: 'Comforting, homely flavors prepared fresh for families and yatris after long travel days.'
+    },
+    {
+      icon: '🥥',
+      title: 'South Indian Kitchen',
+      badge: 'Light & Energizing',
+      items: ['Idli-Sambar', 'Masala Dosa', 'Lemon Rice & Curd Rice'],
+      desc: 'Light yet satisfying meals ideal before travel, trek days, and early morning departures.'
+    }
+  ];
+
   rooms = [
     {
       name: 'Deluxe Room',

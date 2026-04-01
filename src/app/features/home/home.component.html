@@ -423,6 +423,71 @@
 </section>
 
 <!-- ─────────────────────────────────────────── -->
+<!-- CUISINE SHOWCASE -->
+<!-- ─────────────────────────────────────────── -->
+<section appReveal class="py-20 px-4 bg-white">
+  <div class="max-w-6xl mx-auto">
+    <div class="text-center mb-14">
+      <p class="text-[var(--color-saffron)] font-semibold text-sm tracking-widest uppercase mb-3">Dining Experience</p>
+      <h2 class="font-heading text-4xl lg:text-5xl font-bold text-[var(--color-forest)] mb-4">North & South Indian Cuisine</h2>
+      <p class="text-gray-500 max-w-2xl mx-auto">
+        Fresh vegetarian meals prepared daily with regional variety, so every guest can enjoy familiar flavors during
+        their stay.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+      @for (cuisine of cuisineHighlights; track cuisine.title) {
+      <article
+        class="group bg-[var(--color-off-white)] rounded-[32px] p-8 border border-gray-100 shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+        <div class="flex items-start justify-between gap-4 mb-5">
+          <div class="w-14 h-14 rounded-2xl bg-[var(--color-forest)]/10 text-3xl flex items-center justify-center">
+            {{ cuisine.icon }}
+          </div>
+          <span class="text-xs font-bold text-[var(--color-saffron)] bg-[var(--color-saffron)]/10 px-3 py-1 rounded-full uppercase tracking-wider">
+            {{ cuisine.badge }}
+          </span>
+        </div>
+
+        <h3 class="font-heading text-2xl font-bold text-[var(--color-forest)] mb-3">{{ cuisine.title }}</h3>
+        <p class="text-sm text-gray-600 leading-relaxed mb-5">{{ cuisine.desc }}</p>
+
+        <ul class="space-y-2.5 mb-7">
+          @for (item of cuisine.items; track item) {
+          <li class="flex items-center gap-2 text-sm text-gray-700">
+            <span class="text-[var(--color-saffron)]">●</span>
+            <span>{{ item }}</span>
+          </li>
+          }
+        </ul>
+
+        <a [href]="getWhatsAppLink('Hi! Please share meal options for ' + cuisine.title + ' at Kedar Yatra Resort.')"
+          target="_blank"
+          class="inline-flex items-center gap-2 text-[var(--color-forest)] font-semibold hover:text-[var(--color-saffron)] transition-colors">
+          Ask for Menu Details
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+          </svg>
+        </a>
+      </article>
+      }
+    </div>
+
+    <div class="mt-8 p-6 md:p-8 rounded-3xl border border-gray-100 bg-[var(--color-forest)] text-white flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+      <div>
+        <p class="font-heading text-2xl font-bold">Freshly Prepared Daily</p>
+        <p class="text-white/75 text-sm mt-1">Breakfast, lunch, and dinner options available for family and group stays.</p>
+      </div>
+      <a [href]="getWhatsAppLink('Hi! I want to confirm food options (North/South Indian) with my booking.')"
+        target="_blank"
+        class="inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-full bg-[var(--color-saffron)] text-white font-semibold hover:bg-[var(--color-saffron-hover)] transition-all shadow-lg">
+        Add Meals to Booking
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ─────────────────────────────────────────── -->
 <!-- TESTIMONIALS -->
 <!-- ─────────────────────────────────────────── -->
 <section appReveal class="py-20 px-4 bg-[var(--color-forest)]">

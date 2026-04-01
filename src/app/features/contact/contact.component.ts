@@ -2,7 +2,6 @@ import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Title, Meta } from '@angular/platform-browser';
 import { RevealDirective } from '../../shared/directives/reveal.directive';
-import { revealAnimation } from '../../core/animations/reveal-animations';
 
 @Component({
   selector: 'app-contact',
@@ -10,7 +9,6 @@ import { revealAnimation } from '../../core/animations/reveal-animations';
   imports: [CommonModule, RevealDirective],
   templateUrl: './contact.component.html',
   styleUrl: './contact.component.scss',
-  animations: [revealAnimation]
 })
 export class ContactComponent {
   private title = inject(Title);

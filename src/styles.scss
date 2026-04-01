@@ -9,6 +9,9 @@
   --color-saffron-hover: #e78c41;
   --color-off-white: #fafaf9;
   /* Warm white background */
+  /* Navbar: soft tint so the bar isn’t flat white */
+  --color-nav-surface: color-mix(in srgb, var(--color-forest) 6%, var(--color-off-white) 94%);
+  --color-nav-surface-scrolled: color-mix(in srgb, var(--color-forest) 9%, var(--color-off-white) 91%);
 
   --font-heading: 'Outfit', sans-serif;
   --font-body: 'Inter', sans-serif;
@@ -17,6 +20,20 @@
 /* Global resets/overrides */
 html {
   scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .reveal-base {
+    transition: none !important;
+  }
+
+  .scroll-top-btn {
+    transition: none !important;
+  }
 }
 
 body {
