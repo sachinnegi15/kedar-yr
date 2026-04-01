@@ -28,7 +28,8 @@
       </h1>
 
       <!-- Subtitle -->
-      <p class="text-white/95 text-base sm:text-lg lg:text-xl max-w-2xl mb-10 leading-relaxed font-medium drop-shadow-[0_4px_4px_rgba(0,0,0,0.9)]">
+      <p
+        class="text-white/95 text-base sm:text-lg lg:text-xl max-w-2xl mb-10 leading-relaxed font-medium drop-shadow-[0_4px_4px_rgba(0,0,0,0.9)]">
         {{ slide.subtitle }}
       </p>
 
@@ -105,7 +106,7 @@
       <p class="text-sm text-white/70 mt-1">Premium Rooms</p>
     </div>
     <div>
-      <p class="font-heading text-3xl font-bold text-[var(--color-saffron)]">10 km</p>
+      <p class="font-heading text-3xl font-bold text-[var(--color-saffron)]">25 km</p>
       <p class="text-sm text-white/70 mt-1">From Sonprayag</p>
     </div>
     <div>
@@ -208,7 +209,7 @@
               [class.border-[var(--color-saffron)]]="step.isResort" [class.pulse-node]="step.isResort">
               {{ step.icon }}
             </div>
-            <!-- Helicopter Badge (Phata only) -->
+            <!-- Helicopter Badge (Masta only) -->
             <div *ngIf="step.isResort"
               class="absolute -top-4 -right-4 px-3 py-1 bg-[#25D366] text-white text-[10px] font-bold rounded-lg shadow-lg rotate-12 animate-pulse whitespace-nowrap">
               🚁 HELIPORT NEXT DOOR
@@ -249,9 +250,9 @@
         <div
           class="absolute top-0 right-0 p-12 opacity-5 scale-150 rotate-12 group-hover:scale-175 transition-transform duration-1000">
           🚁</div>
-        <h3 class="font-heading text-2xl font-bold mb-4">Phata Helidrome</h3>
+        <h3 class="font-heading text-2xl font-bold mb-4">Masta Helidrome</h3>
         <p class="text-white/70 mb-8 leading-relaxed italic">
-          Why waste hours on a dangerous trek? Our resort is strategically located right next to the Phata Helidrome,
+          Why waste hours on a dangerous trek? Our resort is strategically located right next to the Masta Helidrome,
           the busiest helicopter hub on the yatra route.
         </p>
         <ul class="space-y-4 mb-10">
@@ -274,7 +275,7 @@
       <div class="bg-[var(--color-off-white)] p-10 rounded-[40px] border border-gray-100 flex flex-col justify-center">
         <h3 class="font-heading text-2xl font-bold text-[var(--color-forest)] mb-4">Strategic Location</h3>
         <p class="text-gray-500 leading-relaxed mb-6">
-          Phata is not just a heli-hub; it's a calm alternative to the crowded Gaurikund. By staying with us, you enjoy
+          Masta is not just a heli-hub; it's a calm alternative to the crowded Gaurikund. By staying with us, you enjoy
           the peace of nature while remaining connected to the main highway.
         </p>
         <div class="flex items-center gap-6 p-6 bg-white rounded-3xl shadow-sm border border-gray-50">
@@ -312,7 +313,7 @@
     <div class="w-full md:w-2/3 grid grid-cols-1 sm:grid-cols-2 gap-4">
       <div class="p-6 bg-gray-50 rounded-3xl border border-gray-100">
         <p class="text-xs font-bold text-[var(--color-saffron)] uppercase mb-1">Most Popular</p>
-        <p class="font-bold text-[var(--color-forest)]">Haridwar to Phata</p>
+        <p class="font-bold text-[var(--color-forest)]">Haridwar to Masta</p>
         <p class="text-sm text-gray-500 mt-1">Direct resort drop-off with experienced hill drivers.</p>
       </div>
       <div class="p-6 bg-gray-50 rounded-3xl border border-gray-100">
@@ -429,7 +430,8 @@
   <div class="max-w-6xl mx-auto">
     <div class="text-center mb-14">
       <p class="text-[var(--color-saffron)] font-semibold text-sm tracking-widest uppercase mb-3">Dining Experience</p>
-      <h2 class="font-heading text-4xl lg:text-5xl font-bold text-[var(--color-forest)] mb-4">North & South Indian Cuisine</h2>
+      <h2 class="font-heading text-4xl lg:text-5xl font-bold text-[var(--color-forest)] mb-4">North & South Indian
+        Cuisine</h2>
       <p class="text-gray-500 max-w-2xl mx-auto">
         Fresh vegetarian meals prepared daily with regional variety, so every guest can enjoy familiar flavors during
         their stay.
@@ -444,7 +446,8 @@
           <div class="w-14 h-14 rounded-2xl bg-[var(--color-forest)]/10 text-3xl flex items-center justify-center">
             {{ cuisine.icon }}
           </div>
-          <span class="text-xs font-bold text-[var(--color-saffron)] bg-[var(--color-saffron)]/10 px-3 py-1 rounded-full uppercase tracking-wider">
+          <span
+            class="text-xs font-bold text-[var(--color-saffron)] bg-[var(--color-saffron)]/10 px-3 py-1 rounded-full uppercase tracking-wider">
             {{ cuisine.badge }}
           </span>
         </div>
@@ -473,10 +476,12 @@
       }
     </div>
 
-    <div class="mt-8 p-6 md:p-8 rounded-3xl border border-gray-100 bg-[var(--color-forest)] text-white flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+    <div
+      class="mt-8 p-6 md:p-8 rounded-3xl border border-gray-100 bg-[var(--color-forest)] text-white flex flex-col md:flex-row md:items-center md:justify-between gap-4">
       <div>
         <p class="font-heading text-2xl font-bold">Freshly Prepared Daily</p>
-        <p class="text-white/75 text-sm mt-1">Breakfast, lunch, and dinner options available for family and group stays.</p>
+        <p class="text-white/75 text-sm mt-1">Breakfast, lunch, and dinner options available for family and group stays.
+        </p>
       </div>
       <a [href]="getWhatsAppLink('Hi! I want to confirm food options (North/South Indian) with my booking.')"
         target="_blank"
@@ -543,9 +548,7 @@
     </h2>
     <p class="text-gray-500 text-lg mb-10 max-w-xl mx-auto">Reach out on WhatsApp right now for instant room
       availability, pricing, and special group packages.</p>
-    <a [href]="whatsappBookingBannerUrl"
-      target="_blank"
-      rel="noopener noreferrer"
+    <a [href]="whatsappBookingBannerUrl" target="_blank" rel="noopener noreferrer"
       class="inline-flex items-center gap-3 px-10 py-5 rounded-full bg-[#25D366] hover:bg-[#1ebe5d] text-white font-bold text-lg transition-all duration-300 shadow-2xl hover:shadow-green-400/40 hover:-translate-y-1">
       <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
         <path

@@ -112,7 +112,7 @@ export class HomeComponent implements OnDestroy {
 
   yatraRoute = [
     {
-      name: 'Phata (Resort)',
+      name: 'Masta (Resort)',
       distance: 'Start',
       time: '0 min',
       icon: '🚁',
@@ -121,21 +121,21 @@ export class HomeComponent implements OnDestroy {
     },
     {
       name: 'Sonprayag',
-      distance: '18 km',
+      distance: '25 km',
       time: '45 min',
       icon: '🏘️',
       tip: 'Major hub where private vehicles stop. Shuttle service to Gaurikund starts here.'
     },
     {
       name: 'Gaurikund',
-      distance: '23 km',
+      distance: '30 km',
       time: '1 hr',
       icon: '♨️',
       tip: 'The base for the 16km trek. Famous for its natural hot water spring and Gauri Devi temple.'
     },
     {
       name: 'Kedarnath Temple',
-      distance: '39 km',
+      distance: '45 km',
       time: '8 min (Heli)',
       icon: '🛕',
       tip: 'One of the Chota Char Dhams. A divine spiritual experience at 3,583m altitude.'

@@ -17,7 +17,7 @@ export class TransportComponent {
 
   constructor() {
     this.title.setTitle('Taxi & Travel Services | Haridwar to Kedarnath | Kedar Yatra Resort');
-    this.meta.updateTag({ name: 'description', content: 'Reliable taxi services for Char Dham Yatra. Pickup from Haridwar, Rishikesh, and Dehradun (Airport) directly to Phata and Kedarnath. Safe mountain-trained drivers.' });
+    this.meta.updateTag({ name: 'description', content: 'Reliable taxi services for Char Dham Yatra. Pickup from Haridwar, Rishikesh, and Dehradun (Airport) directly to Masta and Kedarnath. Safe mountain-trained drivers.' });
   }
 
   services = [
@@ -28,7 +28,7 @@ export class TransportComponent {
     },
     {
       title: 'Dehradun Airport (DED) Pickup',
-      desc: 'Personalized airport transfer from Jolly Grant (DED) directly to Phata Helidrome route.',
+      desc: 'Personalized airport transfer from Jolly Grant (DED) directly to Masta Helidrome route.',
       price: 'Starting from ₹5,500'
     },
     {
