@@ -18,7 +18,7 @@ export class RoomsComponent {
   constructor() {
     const pageTitle = 'Rooms & Suites | Kedar Yatra Resort';
     const description = 'Choose from our range of Deluxe, Super Deluxe, and Family rooms. All rooms feature breathtaking Himalayan views and modern amenities for your yatra stay.';
-    const image = 'https://images.unsplash.com/photo-1631049307264-da0ec9d70304?q=80&w=1200';
+    const image = 'https://kedar-yr-gvc4.vercel.app/image/rooms.png';
 
     this.title.setTitle(pageTitle);
 
