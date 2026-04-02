@@ -23,13 +23,13 @@ export class HomeComponent implements OnDestroy {
     {
       // image: 'https://images.unsplash.com/photo-1722619793183-3787ca05d61f?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.1.0',
       // image: 'https://images.pexels.com/photos/32619517/pexels-photo-32619517.jpeg',
-      image: '/image/kedar2.jpg',
+      image: '/banner/kedar2.jpg',
       title: 'Gateway to the Divine',
       subtitle: 'Begin your sacred Kedarnath yatra from our serene retreat — where Himalayan peaks meet spiritual peace.',
       cta: 'Book Your Stay'
     },
     {
-      image: 'https://images.unsplash.com/photo-1598091383021-15ddea10925d?q=80&w=1974&auto=format&fit=crop',
+      image: '/banner/banner2.avif',
       title: 'Where Mountains Embrace You',
       subtitle: 'Luxury stays nestled in the heart of the Garhwal Himalayas with breathtaking valley views.',
       cta: 'Explore Rooms'
