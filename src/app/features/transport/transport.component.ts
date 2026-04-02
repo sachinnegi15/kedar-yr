@@ -16,8 +16,26 @@ export class TransportComponent {
   private meta = inject(Meta);
 
   constructor() {
-    this.title.setTitle('Taxi & Travel Services | Haridwar to Kedarnath | Kedar Yatra Resort');
-    this.meta.updateTag({ name: 'description', content: 'Reliable taxi services for Char Dham Yatra. Pickup from Haridwar, Rishikesh, and Dehradun (Airport) directly to Masta and Kedarnath. Safe mountain-trained drivers.' });
+    const title = 'Taxi & Travel Services | Haridwar to Kedarnath | Kedar Yatra Resort';
+    const description = 'Reliable taxi services for Char Dham Yatra. Pickup from Haridwar, Rishikesh, and Dehradun (Airport) directly to Masta and Kedarnath. Safe mountain-trained drivers.';
+    const image = 'https://kedar-yr-gvc4.vercel.app/image/transport.png';
+
+    this.title.setTitle(title);
+
+    this.meta.updateTag({ name: 'description', content: description });
+
+    // Open Graph (WhatsApp, Facebook)
+    this.meta.updateTag({ property: 'og:title', content: title });
+    this.meta.updateTag({ property: 'og:description', content: description });
+    this.meta.updateTag({ property: 'og:image', content: image });
+    this.meta.updateTag({ property: 'og:url', content: 'https://kedar-yr-gvc4.vercel.app/travel' });
+    this.meta.updateTag({ property: 'og:type', content: 'website' });
+
+    // Twitter
+    this.meta.updateTag({ name: 'twitter:card', content: 'summary_large_image' });
+    this.meta.updateTag({ name: 'twitter:title', content: title });
+    this.meta.updateTag({ name: 'twitter:description', content: description });
+    this.meta.updateTag({ name: 'twitter:image', content: image });
   }
 
   services = [

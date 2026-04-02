@@ -15,8 +15,26 @@ export class GalleryComponent {
   private meta = inject(Meta);
 
   constructor() {
-    this.title.setTitle('Gallery | Stays & Himalayan Views | Kedar Yatra Resort');
-    this.meta.updateTag({ name: 'description', content: 'Explore the stunning vistas of the Garhwal Himalayas and the serene interiors of Kedar Yatra Resort through our photo gallery.' });
+    const title = 'Gallery | Stays & Himalayan Views | Kedar Yatra Resort';
+    const description = 'Explore the stunning vistas of the Garhwal Himalayas and the serene interiors of Kedar Yatra Resort through our photo gallery.';
+    const image = 'https://kedar-yr-gvc4.vercel.app/image/gallery.png';
+
+    this.title.setTitle(title);
+
+    this.meta.updateTag({ name: 'description', content: description });
+
+    // Open Graph (WhatsApp, Facebook)
+    this.meta.updateTag({ property: 'og:title', content: title });
+    this.meta.updateTag({ property: 'og:description', content: description });
+    this.meta.updateTag({ property: 'og:image', content: image });
+    this.meta.updateTag({ property: 'og:url', content: 'https://kedar-yr-gvc4.vercel.app/gallery' });
+    this.meta.updateTag({ property: 'og:type', content: 'website' });
+
+    // Twitter
+    this.meta.updateTag({ name: 'twitter:card', content: 'summary_large_image' });
+    this.meta.updateTag({ name: 'twitter:title', content: title });
+    this.meta.updateTag({ name: 'twitter:description', content: description });
+    this.meta.updateTag({ name: 'twitter:image', content: image });
   }
 
   images = [
@@ -43,8 +61,8 @@ export class GalleryComponent {
   selectedCategory = 'All';
 
   get filteredImages() {
-    return this.selectedCategory === 'All' 
-      ? this.images 
+    return this.selectedCategory === 'All'
+      ? this.images
       : this.images.filter(img => img.category === this.selectedCategory);
   }
 
