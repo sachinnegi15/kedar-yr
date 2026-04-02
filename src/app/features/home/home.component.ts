@@ -143,8 +143,26 @@ export class HomeComponent implements OnDestroy {
   ];
 
   constructor() {
-    this.title.setTitle('Kedar Yatra Resort | Comfortable Stay on Kedarnath Route');
-    this.meta.updateTag({ name: 'description', content: 'Experience serene mountain stays at Kedar Yatra Resort, the perfect base for your Kedarnath journey. Luxury rooms, pure veg food, and 24/7 yatra assistance.' });
+    const title = 'Kedar Yatra Resort | Comfortable Stay on Kedarnath Route';
+    const description = 'Experience serene mountain stays at Kedar Yatra Resort, the perfect base for your Kedarnath journey. Luxury rooms, pure veg food, and 24/7 yatra assistance.';
+    const image = 'https://kedar-yr-gvc4.vercel.app/image/home.png';
+
+    this.title.setTitle(title);
+
+    this.meta.updateTag({ name: 'description', content: description });
+
+    // Open Graph
+    this.meta.updateTag({ property: 'og:title', content: title });
+    this.meta.updateTag({ property: 'og:description', content: description });
+    this.meta.updateTag({ property: 'og:image', content: image });
+    this.meta.updateTag({ property: 'og:url', content: 'https://kedar-yr-gvc4.vercel.app/' });
+    this.meta.updateTag({ property: 'og:type', content: 'website' });
+
+    // Twitter
+    this.meta.updateTag({ name: 'twitter:card', content: 'summary_large_image' });
+    this.meta.updateTag({ name: 'twitter:title', content: title });
+    this.meta.updateTag({ name: 'twitter:description', content: description });
+    this.meta.updateTag({ name: 'twitter:image', content: image });
 
     afterNextRender(() => {
       this.startAutoPlay();
