@@ -16,8 +16,26 @@ export class RoomsComponent {
   private meta = inject(Meta);
 
   constructor() {
-    this.title.setTitle('Rooms & Suites | Kedar Yatra Resort');
-    this.meta.updateTag({ name: 'description', content: 'Choose from our range of Deluxe, Super Deluxe, and Family rooms. All rooms feature breathtaking Himalayan views and modern amenities for your yatra stay.' });
+    const pageTitle = 'Rooms & Suites | Kedar Yatra Resort';
+    const description = 'Choose from our range of Deluxe, Super Deluxe, and Family rooms. All rooms feature breathtaking Himalayan views and modern amenities for your yatra stay.';
+    const image = 'https://images.unsplash.com/photo-1631049307264-da0ec9d70304?q=80&w=1200';
+
+    this.title.setTitle(pageTitle);
+
+    this.meta.updateTag({ name: 'description', content: description });
+
+    // Open Graph (for WhatsApp, Facebook etc.)
+    this.meta.updateTag({ property: 'og:title', content: pageTitle });
+    this.meta.updateTag({ property: 'og:description', content: description });
+    this.meta.updateTag({ property: 'og:image', content: image });
+    this.meta.updateTag({ property: 'og:url', content: 'https://kedar-yr-gvc4.vercel.app/rooms' });
+    this.meta.updateTag({ property: 'og:type', content: 'website' });
+
+    // Twitter (optional but good)
+    this.meta.updateTag({ name: 'twitter:card', content: 'summary_large_image' });
+    this.meta.updateTag({ name: 'twitter:title', content: pageTitle });
+    this.meta.updateTag({ name: 'twitter:description', content: description });
+    this.meta.updateTag({ name: 'twitter:image', content: image });
   }
 
   rooms = [
