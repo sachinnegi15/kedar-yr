@@ -5,6 +5,7 @@
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
+    "prerender": "ng build --prerender",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "serve:ssr:kedarYR": "node dist/kedar-yr/server/server.mjs"
