@@ -39,6 +39,14 @@ html {
 body {
   margin: 0;
   padding: 0;
+  background: var(--color-forest);
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+}
+
+/* Show after app loads */
+body.loaded {
+  opacity: 1;
 }
 
 h1,
